@@ -82,14 +82,13 @@ export default function Orders() {
             hint="Filtrlarni o‘zgartirib ko‘ring yoki qidiruv so‘rovini tozalang." />
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1080px]">
+            <table className="w-full min-w-[980px]">
               <thead className="border-b border-ink-200 dark:border-ink-800">
                 <tr>
                   <th className="th">ID</th>
                   <th className="th">Mijoz</th>
                   <th className="th">Muammo</th>
                   <th className="th">Usta</th>
-                  <th className="th">Hudud</th>
                   <th className="th">Summa</th>
                   <th className="th">Komissiya</th>
                   <th className="th">Holat</th>
@@ -112,11 +111,10 @@ export default function Orders() {
                       <span className="inline-flex items-center gap-1.5">
                         <span className="h-2 w-2 shrink-0 rounded-full"
                           style={{ background: categoryById[o.categoryId]?.color }} />
-                        <span className="max-w-[190px] truncate">{o.problem}</span>
+                        <span className="max-w-[170px] truncate">{o.problem}</span>
                       </span>
                     </td>
                     <td className="td whitespace-nowrap">{o.workerName ?? <span className="muted">—</span>}</td>
-                    <td className="td whitespace-nowrap muted">{o.district}</td>
                     <td className="td whitespace-nowrap tnum">{sum(o.price)}</td>
                     <td className="td whitespace-nowrap tnum text-emerald-600 dark:text-emerald-400">{sum(o.commission)}</td>
                     <td className="td"><Badge tone={statusTone[o.status]}>{statusLabels[o.status]}</Badge></td>
