@@ -40,13 +40,8 @@ export default {
       boxShadow: {
         card: '0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06)',
         pop: '0 8px 24px rgba(16,24,40,.12)',
-        // Qorong'i rejimdagi kartochka: ichki nur + tashqi ko'k soya
-        panel: 'inset 0 1px 0 rgba(120,200,255,.06), 0 2px 16px rgba(0,0,0,.45)',
         glow: '0 0 0 1px rgba(34,195,245,.25), 0 0 20px rgba(34,195,245,.18)',
         'glow-sm': '0 0 12px rgba(34,195,245,.22)',
-      },
-      dropShadow: {
-        neon: '0 0 8px rgba(34,195,245,.55)',
       },
       keyframes: {
         'fade-in': { '0%': { opacity: 0, transform: 'translateY(4px)' }, '100%': { opacity: 1, transform: 'none' } },

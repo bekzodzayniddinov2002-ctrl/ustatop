@@ -116,6 +116,21 @@ PROD_PORT=8000
 HMR mijozi brauzerda shu portga ulanishi uchun `HMR_PORT` compose faylida
 avtomatik `DEV_PORT` ga tenglashtiriladi — qo'shimcha sozlash talab etilmaydi.
 
+### `tailwind.config.js` o'zgarganda
+
+Tailwind konfiguratsiyani dev-server ishga tushganda bir marta o'qiydi.
+Konteyner ishlab turganda `git pull` qilsangiz va konfiguratsiya o'zgargan
+bo'lsa, Vite eski palitra bilan qolib `The ... class does not exist` xatosini
+beradi. Yechim — konteynerni qayta ishga tushirish:
+
+```bash
+# Ctrl+C bilan to'xtating, so'ng:
+docker compose up
+```
+
+Bu faqat `tailwind.config.js` ga tegishli — oddiy kod o'zgarishlari HMR orqali
+qayta ishga tushirishsiz yetkaziladi.
+
 ### Bog'liqliklar o'zgarganda
 
 `package.json` yangilansa, `node_modules` volume'i avtomatik yangilanmaydi:
