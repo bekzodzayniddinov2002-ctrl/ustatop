@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
-  Bell, ClipboardList, Cog, LayoutDashboard, LineChart, MapPinned, Menu, Moon,
+  Bell, ClipboardList, Cog, Home, LayoutDashboard, LineChart, MapPinned, Menu, Moon,
   MessageSquareText, Search, Sun, Users, Wifi, WifiOff, X,
 } from 'lucide-react'
 import { useTheme } from '../hooks/useTheme'
@@ -23,10 +23,15 @@ const NAV = [
 function Logo() {
   return (
     <div className="flex items-center gap-2.5">
-      <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-600 font-extrabold text-white">U</span>
+      <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-600 text-white
+                       dark:bg-brand-500/15 dark:text-brand-300 dark:ring-1 dark:ring-brand-400/40 dark:shadow-glow-sm">
+        <Home className="h-[18px] w-[18px]" />
+      </span>
       <span className="leading-tight">
-        <span className="block text-sm font-extrabold tracking-tight text-ink-900 dark:text-white">UstaTop</span>
-        <span className="block text-[11px] muted">Admin panel</span>
+        <span className="block text-base font-extrabold tracking-tight text-ink-900 dark:text-white">
+          Usta<span className="text-brand-600 dark:text-brand-300">Top</span>
+        </span>
+        <span className="block text-[10px] uppercase tracking-widest muted">Admin panel</span>
       </span>
     </div>
   )
@@ -46,8 +51,8 @@ function Sidebar({ onNavigate }) {
             className={({ isActive }) => cx(
               'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
               isActive
-                ? 'bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-300'
-                : 'text-ink-600 hover:bg-ink-100 hover:text-ink-900 dark:text-ink-300 dark:hover:bg-ink-800 dark:hover:text-white',
+                ? 'bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-300 dark:ring-1 dark:ring-brand-400/25'
+                : 'text-ink-600 hover:bg-ink-100 hover:text-ink-900 dark:text-ink-300 dark:hover:bg-ink-800/60 dark:hover:text-white',
             )}>
             <Icon className="h-[18px] w-[18px] shrink-0" />
             <span className="flex-1 truncate">{label}</span>
@@ -60,7 +65,7 @@ function Sidebar({ onNavigate }) {
         ))}
       </nav>
 
-      <div className="m-3 rounded-xl border border-ink-200 bg-ink-50 p-3 dark:border-ink-800 dark:bg-ink-950">
+      <div className="m-3 rounded-xl border border-ink-200 bg-ink-50 p-3 dark:border-brand-400/15 dark:bg-brand-500/5">
         <p className="text-xs font-semibold text-ink-900 dark:text-ink-100">Pilot: Navoiy shahri</p>
         <p className="mt-1 text-[11px] leading-relaxed muted">
           Keyingi bosqich — Buxoro va Samarqand (2026).
@@ -79,7 +84,7 @@ function Topbar({ onMenu }) {
   const { connected, lastEventAt, liveEnabled, setLiveEnabled, stats } = useApp()
 
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-ink-200 bg-white/90 px-4 backdrop-blur dark:border-ink-800 dark:bg-ink-900/90">
+    <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-ink-200 bg-white/90 px-4 backdrop-blur dark:border-brand-400/10 dark:bg-ink-950/80">
       <button type="button" onClick={onMenu}
         className="btn-ghost !px-2 lg:hidden" aria-label="Menyuni ochish">
         <Menu className="h-5 w-5" />
@@ -96,8 +101,8 @@ function Topbar({ onMenu }) {
           className={cx(
             'hidden items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium sm:inline-flex',
             connected
-              ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300'
-              : 'bg-ink-100 text-ink-600 dark:bg-ink-800 dark:text-ink-300',
+              ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-400/30'
+              : 'bg-ink-100 text-ink-600 dark:bg-ink-800/70 dark:text-ink-300',
           )}
           title={connected ? 'Socket.io ulangan — bosib to‘xtatish mumkin' : 'Real-vaqt oqim o‘chirilgan'}>
           {connected ? <Wifi className="h-3.5 w-3.5" /> : <WifiOff className="h-3.5 w-3.5" />}
@@ -108,7 +113,7 @@ function Topbar({ onMenu }) {
         <button type="button" className="btn-ghost relative !px-2" aria-label="Bildirishnomalar">
           <Bell className="h-[18px] w-[18px]" />
           {stats.active > 0 && (
-            <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white dark:ring-ink-900" />
+            <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white dark:ring-ink-950" />
           )}
         </button>
 
@@ -117,8 +122,9 @@ function Topbar({ onMenu }) {
           {theme === 'dark' ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
         </button>
 
-        <div className="flex items-center gap-2 border-l border-ink-200 pl-2 dark:border-ink-800">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-600 text-xs font-bold text-white">AB</span>
+        <div className="flex items-center gap-2 border-l border-ink-200 pl-2 dark:border-brand-400/10">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-600 text-xs font-bold text-white
+                           dark:bg-brand-500/15 dark:text-brand-300 dark:ring-1 dark:ring-brand-400/40">AB</span>
           <span className="hidden leading-tight md:block">
             <span className="block text-xs font-semibold text-ink-900 dark:text-white">Admin</span>
             <span className="block text-[11px] muted">Navoiy</span>
@@ -134,7 +140,7 @@ function Toast() {
   if (!toast) return null
   return (
     <div className="pointer-events-none fixed bottom-5 left-1/2 z-50 -translate-x-1/2 animate-fade-in">
-      <div className="flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white shadow-pop dark:bg-white dark:text-ink-900">
+      <div className="flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white shadow-pop dark:bg-brand-500 dark:text-ink-950">
         <Dot tone="emerald" />
         {toast.message}
       </div>
@@ -152,7 +158,7 @@ export function Layout() {
   return (
     <div className="min-h-screen">
       {/* doimiy yon panel — katta ekranlar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-ink-200 bg-white dark:border-ink-800 dark:bg-ink-900 lg:block">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-ink-200 bg-white dark:border-brand-400/10 dark:bg-ink-950/80 dark:backdrop-blur lg:block">
         <Sidebar />
       </aside>
 
@@ -161,7 +167,7 @@ export function Layout() {
         <div className="fixed inset-0 z-50 lg:hidden">
           <button type="button" aria-label="Menyuni yopish"
             className="absolute inset-0 bg-ink-950/50 backdrop-blur-sm" onClick={() => setOpen(false)} />
-          <aside className="absolute inset-y-0 left-0 w-64 animate-fade-in border-r border-ink-200 bg-white dark:border-ink-800 dark:bg-ink-900">
+          <aside className="absolute inset-y-0 left-0 w-64 animate-fade-in border-r border-ink-200 bg-white dark:border-brand-400/10 dark:bg-ink-950">
             <button type="button" onClick={() => setOpen(false)}
               className="absolute right-3 top-4 text-ink-400 hover:text-ink-900 dark:hover:text-white"
               aria-label="Yopish">

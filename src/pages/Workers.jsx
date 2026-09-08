@@ -51,7 +51,7 @@ export default function Workers() {
       </div>
 
       <Card className="mt-4" bodyClass="p-0">
-        <div className="flex flex-wrap items-center gap-3 border-b border-ink-200 p-4 dark:border-ink-800">
+        <div className="flex flex-wrap items-center gap-3 border-b border-ink-200 p-4 dark:border-brand-400/10">
           <div className="flex flex-wrap gap-1">
             {TABS.map((t) => (
               <button key={t.id} type="button" onClick={() => setTab(t.id)}
@@ -85,7 +85,7 @@ export default function Workers() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[940px] [&_td]:px-3 [&_th]:px-3">
-              <thead className="border-b border-ink-200 dark:border-ink-800">
+              <thead className="border-b border-ink-200 dark:border-brand-400/10">
                 <tr>
                   <th className="th">Usta</th>
                   <th className="th">Kategoriya</th>
@@ -97,7 +97,7 @@ export default function Workers() {
                   <th className="th">Amallar</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-ink-100 dark:divide-ink-800">
+              <tbody className="divide-y divide-ink-100 dark:divide-ink-800/70">
                 {rows.map((w) => (
                   <tr key={w.id} className="transition-colors hover:bg-ink-50 dark:hover:bg-ink-800/50">
                     <td className="td whitespace-nowrap">
@@ -154,7 +154,7 @@ export default function Workers() {
           </div>
         )}
 
-        <div className="border-t border-ink-200 px-4 py-3 text-xs muted dark:border-ink-800">
+        <div className="border-t border-ink-200 px-4 py-3 text-xs muted dark:border-brand-400/10">
           {rows.length} ta usta ko‘rsatilmoqda · eng erta ro‘yxatdan o‘tgan:{' '}
           {date([...workers].sort((a, b) => new Date(a.joinedAt) - new Date(b.joinedAt))[0].joinedAt)}
         </div>

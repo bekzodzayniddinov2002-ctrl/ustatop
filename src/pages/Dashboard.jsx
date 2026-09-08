@@ -60,12 +60,12 @@ export default function Dashboard() {
 
       {/* --- grafiklar --- */}
       <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-3">
-        <Card className="xl:col-span-2" title="Aylanma va buyurtmalar dinamikasi"
+        <Card num="01" className="xl:col-span-2" title="Aylanma va buyurtmalar dinamikasi"
           subtitle="Pilot boshlanganidan buyon oylik o‘sish">
           <RevenueChart data={monthlySeries} />
         </Card>
 
-        <Card title="Kategoriyalar kesimi" subtitle="Buyurtmalar taqsimoti">
+        <Card num="02" title="Kategoriyalar kesimi" subtitle="Buyurtmalar taqsimoti">
           <CategoryDonut data={byCategory} />
           <ul className="mt-3 space-y-1.5">
             {byCategory.slice(0, 5).map((c) => (
@@ -80,11 +80,11 @@ export default function Dashboard() {
       </div>
 
       <div className="mt-4 grid grid-cols-1 items-start gap-4 xl:grid-cols-3">
-        <Card className="xl:col-span-2" title="So‘nggi 14 kun" subtitle="Kunlik buyurtmalar va bajarilishi">
+        <Card num="03" className="xl:col-span-2" title="So‘nggi 14 kun" subtitle="Kunlik buyurtmalar va bajarilishi">
           <DailyOrdersChart data={dailySeries} />
         </Card>
 
-        <Card title="Yillik KPI maqsadlari" subtitle="Pitch deck bo‘yicha rejalar">
+        <Card num="04" title="Yillik KPI maqsadlari" subtitle="Pitch deck bo‘yicha rejalar">
           <ul className="space-y-4">
             {Object.entries(kpiTargets).map(([key, k]) => {
               const isMoney = key === 'revenueYear'
@@ -105,7 +105,7 @@ export default function Dashboard() {
             })}
           </ul>
 
-          <div className="mt-5 border-t border-ink-200 pt-4 dark:border-ink-800">
+          <div className="mt-5 border-t border-ink-200 pt-4 dark:border-brand-400/10">
             <p className="mb-2 text-xs font-semibold text-ink-900 dark:text-ink-100">Kengayish rejasi</p>
             <ol className="space-y-2">
               {roadmap.map((r) => (
@@ -123,7 +123,7 @@ export default function Dashboard() {
 
       {/* --- xarita + tizim holati --- */}
       <div className="mt-4 grid grid-cols-1 items-start gap-4 xl:grid-cols-3">
-        <Card className="xl:col-span-2" bodyClass="p-0"
+        <Card num="05" className="xl:col-span-2" bodyClass="p-0"
           title="Ustalar joylashuvi" subtitle="Real-vaqt GPS kuzatuvi (±5m)"
           action={<Link to="/xarita" className="btn-ghost !py-1.5 !text-xs">To‘liq xarita</Link>}>
           <div className="p-4 pt-0">
@@ -132,12 +132,12 @@ export default function Dashboard() {
         </Card>
 
         <div className="space-y-4">
-          <Card title="Tizim holati" subtitle="Backend va real-vaqt qatlami">
+          <Card num="06" title="Tizim holati" subtitle="Backend va real-vaqt qatlami">
             <dl className="grid grid-cols-2 gap-3">
               {systemHealth.map((h) => (
-                <div key={h.label} className="rounded-lg border border-ink-200 p-3 dark:border-ink-800">
+                <div key={h.label} className="rounded-lg border border-ink-200 p-3 dark:border-brand-400/15 dark:bg-brand-500/5">
                   <dt className="text-xs muted">{h.label}</dt>
-                  <dd className="mt-1 text-base font-bold text-ink-900 dark:text-white">{h.value}</dd>
+                  <dd className="mt-1 text-base font-bold text-ink-900 dark:text-brand-300">{h.value}</dd>
                 </div>
               ))}
             </dl>
@@ -173,7 +173,7 @@ export default function Dashboard() {
         action={<Link to="/buyurtmalar" className="btn-ghost !py-1.5 !text-xs">Barchasi</Link>}>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[820px]">
-            <thead className="border-b border-ink-200 dark:border-ink-800">
+            <thead className="border-b border-ink-200 dark:border-brand-400/10">
               <tr>
                 <th className="th">ID</th>
                 <th className="th">Mijoz</th>
@@ -184,9 +184,9 @@ export default function Dashboard() {
                 <th className="th">Vaqt</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-ink-100 dark:divide-ink-800">
+            <tbody className="divide-y divide-ink-100 dark:divide-ink-800/70">
               {recent.map((o) => (
-                <tr key={o.id} className={o.isNew ? 'animate-fade-in bg-brand-50/50 dark:bg-brand-500/5' : ''}>
+                <tr key={o.id} className={o.isNew ? 'animate-fade-in bg-brand-50/50 dark:bg-brand-500/10' : ''}>
                   <td className="td font-semibold tnum">{o.id}</td>
                   <td className="td whitespace-nowrap">{o.clientName}</td>
                   <td className="td">

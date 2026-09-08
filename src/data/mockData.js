@@ -25,14 +25,14 @@ const intBetween = (min, max) => Math.floor(between(min, max + 1))
 /* ---------------------------------------------------------------- kategoriyalar */
 
 export const categories = [
-  { id: 'elektrik', name: 'Elektrik', icon: 'Zap', color: '#f59e0b', basePrice: 80000 },
-  { id: 'santexnik', name: 'Santexnik', icon: 'Droplets', color: '#0ea5e9', basePrice: 90000 },
-  { id: 'gaz', name: 'Gaz', icon: 'Flame', color: '#ef4444', basePrice: 120000 },
-  { id: 'tozalash', name: 'Tozalash', icon: 'Sparkles', color: '#00a896', basePrice: 150000 },
-  { id: 'konditsioner', name: 'Konditsioner', icon: 'Wind', color: '#6366f1', basePrice: 180000 },
-  { id: 'maishiy', name: 'TV / Maishiy texnika', icon: 'Tv', color: '#a855f7', basePrice: 100000 },
-  { id: 'qulf', name: 'Qulf', icon: 'KeyRound', color: '#64748b', basePrice: 70000 },
-  { id: 'boshqa', name: 'Boshqa', icon: 'Wrench', color: '#f97316', basePrice: 85000 },
+  { id: 'elektrik', name: 'Elektrik', icon: 'Zap', color: '#fbbf24', basePrice: 80000 },
+  { id: 'santexnik', name: 'Santexnik', icon: 'Droplets', color: '#38bdf8', basePrice: 90000 },
+  { id: 'gaz', name: 'Gaz', icon: 'Flame', color: '#fb7185', basePrice: 120000 },
+  { id: 'tozalash', name: 'Tozalash', icon: 'Sparkles', color: '#22c3f5', basePrice: 150000 },
+  { id: 'konditsioner', name: 'Konditsioner', icon: 'Wind', color: '#818cf8', basePrice: 180000 },
+  { id: 'maishiy', name: 'TV / Maishiy texnika', icon: 'Tv', color: '#c084fc', basePrice: 100000 },
+  { id: 'qulf', name: 'Qulf', icon: 'KeyRound', color: '#94a3b8', basePrice: 70000 },
+  { id: 'boshqa', name: 'Boshqa', icon: 'Wrench', color: '#fb923c', basePrice: 85000 },
 ]
 
 export const categoryById = Object.fromEntries(categories.map((c) => [c.id, c]))

@@ -9,13 +9,13 @@ import { axisSum, num, sum } from '../lib/format'
  * o'qilishi uchun o'q/grid ranglari CSS o'zgaruvchisi emas, `currentColor` bilan
  * emas — aniq rangda beriladi va `dark` klassiga qarab tanlanadi.
  */
-const AXIS = { fontSize: 12, fill: '#8590a4' }
-const GRID = 'rgba(133,144,164,.22)'
+const AXIS = { fontSize: 12, fill: '#7286a6' }
+const GRID = 'rgba(114,134,166,.22)'
 
 function TipBox({ active, payload, label, valueFormat }) {
   if (!active || !payload?.length) return null
   return (
-    <div className="rounded-lg border border-ink-200 bg-white px-3 py-2 text-xs shadow-pop dark:border-ink-700 dark:bg-ink-900">
+    <div className="rounded-lg border border-ink-200 bg-white px-3 py-2 text-xs shadow-pop dark:border-brand-400/30 dark:bg-ink-900">
       <p className="mb-1 font-semibold text-ink-900 dark:text-ink-100">{label}</p>
       {payload.map((p) => (
         <p key={p.dataKey ?? p.name} className="flex items-center gap-2 text-ink-600 dark:text-ink-300">
@@ -37,8 +37,8 @@ export function RevenueChart({ data, height = 280 }) {
       <ComposedChart data={data} margin={{ top: 8, right: 8, left: -8, bottom: 0 }}>
         <defs>
           <linearGradient id="gRevenue" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#028090" stopOpacity={0.35} />
-            <stop offset="100%" stopColor="#028090" stopOpacity={0.02} />
+            <stop offset="0%" stopColor="#22c3f5" stopOpacity={0.45} />
+            <stop offset="100%" stopColor="#22c3f5" stopOpacity={0.02} />
           </linearGradient>
         </defs>
         <CartesianGrid stroke={GRID} vertical={false} />
@@ -46,10 +46,10 @@ export function RevenueChart({ data, height = 280 }) {
         <YAxis yAxisId="left" tick={AXIS} axisLine={false} tickLine={false} tickFormatter={axisSum} />
         <YAxis yAxisId="right" orientation="right" tick={AXIS} axisLine={false} tickLine={false} />
         <Tooltip content={<TipBox valueFormat={(v, k) => (k === 'revenue' ? sum(v, { short: true }) : num(v))} />} />
-        <Area yAxisId="left" type="monotone" dataKey="revenue" name="Aylanma" stroke="#028090"
+        <Area yAxisId="left" type="monotone" dataKey="revenue" name="Aylanma" stroke="#22c3f5"
           strokeWidth={2} fill="url(#gRevenue)" />
-        <Line yAxisId="right" type="monotone" dataKey="orders" name="Buyurtmalar" stroke="#f59e0b"
-          strokeWidth={2} dot={{ r: 3, fill: '#f59e0b' }} />
+        <Line yAxisId="right" type="monotone" dataKey="orders" name="Buyurtmalar" stroke="#fbbf24"
+          strokeWidth={2} dot={{ r: 3, fill: '#fbbf24' }} />
         <Legend iconType="circle" wrapperStyle={{ fontSize: 12, paddingTop: 8 }} />
       </ComposedChart>
     </ResponsiveContainer>
@@ -64,10 +64,10 @@ export function DailyOrdersChart({ data, height = 240 }) {
         <CartesianGrid stroke={GRID} vertical={false} />
         <XAxis dataKey="date" tick={AXIS} axisLine={false} tickLine={false} interval={1} />
         <YAxis tick={AXIS} axisLine={false} tickLine={false} allowDecimals={false} />
-        <Tooltip cursor={{ fill: 'rgba(2,128,144,.06)' }} content={<TipBox />} />
+        <Tooltip cursor={{ fill: 'rgba(34,195,245,.08)' }} content={<TipBox />} />
         <Legend iconType="circle" wrapperStyle={{ fontSize: 12, paddingTop: 8 }} />
-        <Bar dataKey="orders" name="Buyurtmalar" fill="#8adcd3" radius={[4, 4, 0, 0]} />
-        <Bar dataKey="completed" name="Bajarilgan" fill="#028090" radius={[4, 4, 0, 0]} />
+        <Bar dataKey="orders" name="Buyurtmalar" fill="#3d6f8f" radius={[4, 4, 0, 0]} />
+        <Bar dataKey="completed" name="Bajarilgan" fill="#22c3f5" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   )
@@ -104,10 +104,10 @@ export function HourlyLoadChart({ data, height = 200 }) {
         <CartesianGrid stroke={GRID} vertical={false} />
         <XAxis dataKey="hour" tick={AXIS} axisLine={false} tickLine={false} />
         <YAxis tick={AXIS} axisLine={false} tickLine={false} allowDecimals={false} />
-        <Tooltip cursor={{ fill: 'rgba(2,128,144,.06)' }} content={<TipBox />} />
+        <Tooltip cursor={{ fill: 'rgba(34,195,245,.08)' }} content={<TipBox />} />
         <Bar dataKey="orders" name="Buyurtmalar" radius={[4, 4, 0, 0]}>
           {data.map((d) => (
-            <Cell key={d.hour} fill={d.orders === peak ? '#028090' : '#8adcd3'} />
+            <Cell key={d.hour} fill={d.orders === peak ? '#22c3f5' : '#3d6f8f'} />
           ))}
         </Bar>
       </BarChart>

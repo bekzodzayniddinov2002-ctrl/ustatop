@@ -24,7 +24,7 @@ function project({ lat, lng }) {
   }
 }
 
-const STATUS_FILL = { online: '#00a896', offline: '#8590a4', blocked: '#f43f5e' }
+const STATUS_FILL = { online: '#22c3f5', offline: '#5b7391', blocked: '#fb7185' }
 
 export function LiveMap({ workers, orders = [], height = 420, showOrders = true }) {
   const [selected, setSelected] = useState(null)
@@ -37,16 +37,16 @@ export function LiveMap({ workers, orders = [], height = 420, showOrders = true 
   )
 
   return (
-    <div className="relative overflow-hidden rounded-xl bg-[#eaf1f2] dark:bg-ink-950" style={{ height }}>
+    <div className="relative overflow-hidden rounded-xl border border-ink-200 bg-[#eaf1f2] dark:border-brand-400/15 dark:bg-[#060f1f]" style={{ height }}>
       <svg viewBox={`0 0 ${W} ${H}`} className="h-full w-full" preserveAspectRatio="xMidYMid slice"
         role="img" aria-label="Navoiy shahri — ustalar joylashuvi">
         <defs>
           <pattern id="blocks" width="6" height="6" patternUnits="userSpaceOnUse">
-            <path d="M6 0H0V6" fill="none" stroke="rgba(2,128,144,.14)" strokeWidth=".28" />
+            <path d="M6 0H0V6" fill="none" stroke="rgba(34,195,245,.16)" strokeWidth=".28" />
           </pattern>
           <radialGradient id="glow">
-            <stop offset="0%" stopColor="#00a896" stopOpacity=".22" />
-            <stop offset="100%" stopColor="#00a896" stopOpacity="0" />
+            <stop offset="0%" stopColor="#22c3f5" stopOpacity=".28" />
+            <stop offset="100%" stopColor="#22c3f5" stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -55,15 +55,15 @@ export function LiveMap({ workers, orders = [], height = 420, showOrders = true 
         {/* markaz atrofidagi faollik zonasi */}
         <circle cx={W / 2} cy={H / 2} r="26" fill="url(#glow)" />
         {/* asosiy magistrallar */}
-        <path d={`M0 ${H * 0.42} L${W} ${H * 0.36}`} stroke="rgba(2,128,144,.3)" strokeWidth=".7" fill="none" />
-        <path d={`M${W * 0.46} 0 L${W * 0.52} ${H}`} stroke="rgba(2,128,144,.3)" strokeWidth=".7" fill="none" />
-        <path d={`M0 ${H * 0.78} Q${W * 0.5} ${H * 0.62} ${W} ${H * 0.84}`} stroke="rgba(2,128,144,.22)" strokeWidth=".5" fill="none" />
+        <path d={`M0 ${H * 0.42} L${W} ${H * 0.36}`} stroke="rgba(34,195,245,.32)" strokeWidth=".7" fill="none" />
+        <path d={`M${W * 0.46} 0 L${W * 0.52} ${H}`} stroke="rgba(34,195,245,.32)" strokeWidth=".7" fill="none" />
+        <path d={`M0 ${H * 0.78} Q${W * 0.5} ${H * 0.62} ${W} ${H * 0.84}`} stroke="rgba(34,195,245,.22)" strokeWidth=".5" fill="none" />
 
         {/* faol buyurtmalar */}
         {orderPins.map((o) => (
           <g key={o.id} transform={`translate(${o.x} ${o.y})`}>
-            <circle r="1.6" fill="#f59e0b" fillOpacity=".18" />
-            <circle r=".7" fill="#f59e0b" />
+            <circle r="1.6" fill="#fbbf24" fillOpacity=".22" />
+            <circle r=".7" fill="#fbbf24" />
           </g>
         ))}
 
@@ -75,13 +75,13 @@ export function LiveMap({ workers, orders = [], height = 420, showOrders = true 
               className="cursor-pointer"
               onClick={() => setSelected(isSel ? null : w)}>
               {w.status === 'online' && (
-                <circle r="2.4" fill="#00a896" fillOpacity=".16">
+                <circle r="2.4" fill="#22c3f5" fillOpacity=".18">
                   <animate attributeName="r" values="1.4;3.2;1.4" dur="2.6s" repeatCount="indefinite" />
                   <animate attributeName="fill-opacity" values=".28;0;.28" dur="2.6s" repeatCount="indefinite" />
                 </circle>
               )}
               <circle r={isSel ? 1.7 : 1.15} fill={STATUS_FILL[w.status]}
-                stroke="#fff" strokeWidth={isSel ? '.5' : '.3'} />
+                stroke={isSel ? '#fff' : 'rgba(255,255,255,.75)'} strokeWidth={isSel ? '.5' : '.28'} />
             </g>
           )
         })}
@@ -94,14 +94,14 @@ export function LiveMap({ workers, orders = [], height = 420, showOrders = true 
         <Badge tone="amber"><Dot tone="amber" /> Faol buyurtma</Badge>
       </div>
 
-      <div className="pointer-events-none absolute right-3 top-3 flex items-center gap-1.5 rounded-lg bg-white/90 px-2.5 py-1.5 text-xs font-medium text-ink-700 shadow-card backdrop-blur dark:bg-ink-900/90 dark:text-ink-200">
-        <Crosshair className="h-3.5 w-3.5 text-brand-600" />
+      <div className="pointer-events-none absolute right-3 top-3 flex items-center gap-1.5 rounded-lg bg-white/90 px-2.5 py-1.5 text-xs font-medium text-ink-700 shadow-card backdrop-blur dark:bg-ink-900/85 dark:text-ink-100 dark:ring-1 dark:ring-brand-400/25">
+        <Crosshair className="h-3.5 w-3.5 text-brand-600 dark:text-brand-300" />
         Navoiy shahri
       </div>
 
       {/* tanlangan usta kartochkasi */}
       {selected && (
-        <div className="absolute bottom-3 left-3 right-3 animate-fade-in rounded-xl border border-ink-200 bg-white/95 p-3 shadow-pop backdrop-blur dark:border-ink-700 dark:bg-ink-900/95 sm:right-auto sm:w-72">
+        <div className="absolute bottom-3 left-3 right-3 animate-fade-in rounded-xl border border-ink-200 bg-white/95 p-3 shadow-pop backdrop-blur dark:border-brand-400/30 dark:bg-ink-900/95 sm:right-auto sm:w-72">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold text-ink-900 dark:text-white">{selected.name}</p>
@@ -137,9 +137,9 @@ export function MapLegendStats({ items }) {
   return (
     <dl className="grid grid-cols-2 gap-3">
       {items.map((it) => (
-        <div key={it.label} className={cx('rounded-lg border border-ink-200 p-3 dark:border-ink-800')}>
+        <div key={it.label} className={cx('rounded-lg border border-ink-200 p-3 dark:border-brand-400/15 dark:bg-brand-500/5')}>
           <dt className="text-xs muted">{it.label}</dt>
-          <dd className="mt-1 text-lg font-bold tnum text-ink-900 dark:text-white">{it.value}</dd>
+          <dd className="mt-1 text-lg font-bold tnum text-ink-900 dark:text-brand-300">{it.value}</dd>
         </div>
       ))}
     </dl>

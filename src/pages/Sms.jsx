@@ -145,7 +145,7 @@ export default function Sms() {
       <Card className="mt-4" bodyClass="p-0" title="Kampaniyalar tarixi">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[640px]">
-            <thead className="border-b border-ink-200 dark:border-ink-800">
+            <thead className="border-b border-ink-200 dark:border-brand-400/10">
               <tr>
                 <th className="th">Kampaniya</th>
                 <th className="th">Auditoriya</th>
@@ -155,7 +155,7 @@ export default function Sms() {
                 <th className="th">Holat</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-ink-100 dark:divide-ink-800">
+            <tbody className="divide-y divide-ink-100 dark:divide-ink-800/70">
               {campaigns.map((c) => (
                 <tr key={c.id}>
                   <td className="td font-medium text-ink-900 dark:text-white">{c.title}</td>

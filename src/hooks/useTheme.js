@@ -9,7 +9,8 @@ export function useTheme() {
       const saved = localStorage.getItem(KEY)
       if (saved === 'dark' || saved === 'light') return saved
     } catch { /* private mode — standart rejim */ }
-    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    // Referens dizayn tungi ko'k — standart holat qorong'i rejim
+    return 'dark'
   })
 
   useEffect(() => {

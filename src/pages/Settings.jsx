@@ -93,7 +93,7 @@ export default function Settings() {
         subtitle="Har bir kategoriya uchun boshlang‘ich narx — mijozga taxminiy hisob shu asosda ko‘rsatiladi">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[560px]">
-            <thead className="border-b border-ink-200 dark:border-ink-800">
+            <thead className="border-b border-ink-200 dark:border-brand-400/10">
               <tr>
                 <th className="th">Kategoriya</th>
                 <th className="th">Boshlang‘ich narx</th>
@@ -101,7 +101,7 @@ export default function Settings() {
                 <th className="th">Ustaga</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-ink-100 dark:divide-ink-800">
+            <tbody className="divide-y divide-ink-100 dark:divide-ink-800/70">
               {categories.map((c) => {
                 const price = prices[c.id]
                 const fee = Math.round(price * draft.commissionRate / 100)

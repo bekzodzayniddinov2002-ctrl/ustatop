@@ -5,31 +5,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        // UstaTop brand — "teal trust", ish/xizmat sohasiga mos
+        // UstaTop brand — pitch deck infografikasidagi neon moviy urg'u
         brand: {
-          50: '#e6f7f5',
-          100: '#c3ece7',
-          200: '#8adcd3',
-          300: '#4fc9bd',
-          400: '#22b3a6',
-          500: '#00a896',
-          600: '#028090',
-          700: '#046a77',
-          800: '#08525c',
-          900: '#0a3f47',
+          50: '#e4f8ff',
+          100: '#bdefff',
+          200: '#85e2ff',
+          300: '#4ad3ff',
+          400: '#22c3f5',
+          500: '#04ade4',
+          600: '#008cc2',
+          700: '#006d9b',
+          800: '#08556f',
+          900: '#0b4257',
         },
+        // Neytral shkala moviy tomonga siljitilgan — qorong'i rejim
+        // infografikadagi tungi ko'k fonni takrorlaydi
         ink: {
-          50: '#f6f7f9',
-          100: '#eceef2',
-          200: '#d5d9e1',
-          300: '#b0b8c6',
-          400: '#8590a4',
-          500: '#667389',
-          600: '#515c70',
-          700: '#424b5b',
-          800: '#39404d',
-          900: '#1c222c',
-          950: '#12161d',
+          50: '#f4f7fb',
+          100: '#e6edf6',
+          200: '#cdd9e9',
+          300: '#a3b5ce',
+          400: '#7286a6',
+          500: '#54688a',
+          600: '#3d5070',
+          700: '#263a56',
+          800: '#152840',
+          900: '#0b1a2e',
+          950: '#050e1c',
         },
       },
       fontFamily: {
@@ -38,6 +40,13 @@ export default {
       boxShadow: {
         card: '0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06)',
         pop: '0 8px 24px rgba(16,24,40,.12)',
+        // Qorong'i rejimdagi kartochka: ichki nur + tashqi ko'k soya
+        panel: 'inset 0 1px 0 rgba(120,200,255,.06), 0 2px 16px rgba(0,0,0,.45)',
+        glow: '0 0 0 1px rgba(34,195,245,.25), 0 0 20px rgba(34,195,245,.18)',
+        'glow-sm': '0 0 12px rgba(34,195,245,.22)',
+      },
+      dropShadow: {
+        neon: '0 0 8px rgba(34,195,245,.55)',
       },
       keyframes: {
         'fade-in': { '0%': { opacity: 0, transform: 'translateY(4px)' }, '100%': { opacity: 1, transform: 'none' } },

@@ -113,7 +113,7 @@ export default function Analytics() {
               </li>
             ))}
           </ul>
-          <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-ink-200 pt-4 dark:border-ink-800">
+          <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-ink-200 pt-4 dark:border-brand-400/10">
             {[
               { k: 'Internet foydalanuvchilari', v: '32.7M' },
               { k: 'Penetratsiya', v: '89%' },

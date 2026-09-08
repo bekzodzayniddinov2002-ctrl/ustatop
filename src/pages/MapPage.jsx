@@ -73,7 +73,7 @@ export default function MapPage() {
           </Card>
 
           <Card title="Faol buyurtmalar" subtitle="Hozir bajarilayotgan ishlar" bodyClass="p-0">
-            <ul className="divide-y divide-ink-100 dark:divide-ink-800">
+            <ul className="divide-y divide-ink-100 dark:divide-ink-800/70">
               {activeOrders.map((o) => (
                 <li key={o.id} className="flex items-start gap-3 p-3">
                   <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"

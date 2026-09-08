@@ -15,7 +15,7 @@ Taqdimotdagi arxitektura bo‘yicha tanlangan stek:
 |---|---|
 | UI | **React 18** |
 | Build | **Vite 6** |
-| Uslub | **Tailwind CSS 3** (yorug‘ / qorong‘i rejim) |
+| Uslub | **Tailwind CSS 3** (qorong‘i rejim standart, yorug‘ rejim ham bor) |
 | Grafiklar | **Recharts** |
 | Routing | React Router 6 |
 | Ikonkalar | lucide-react |
@@ -50,6 +50,19 @@ npm run dev      # http://localhost:5173
 npm run build    # ishlab chiqarish uchun build (dist/)
 npm run preview  # build'ni lokal ko'rish
 ```
+
+## Dizayn
+
+Interfeys investor taqdimotining infografika uslubida qurilgan: tungi ko‘k fon,
+neon moviy urg‘u, yorug‘ halqali ikonkalar va bo‘lim raqamlari (`01`, `02`, …).
+
+- **Palitra** — `tailwind.config.js` dagi `brand` (neon moviy) va `ko‘kka
+  siljitilgan `ink` shkalasi. Rangni o‘zgartirish uchun shu ikki shkalani
+  tahrirlash kifoya, qolgani avtomatik moslashadi.
+- **Qorong‘i rejim standart holat.** Yuqori o‘ng burchakdagi tugma orqali
+  yorug‘ rejimga o‘tish mumkin, tanlov brauzerda saqlanadi.
+- **Neon effektlar** — `index.css` dagi `.stat-value`, `.section-num` va
+  `tailwind.config.js` dagi `shadow-glow` / `shadow-panel`.
 
 ## Sahifalar
 

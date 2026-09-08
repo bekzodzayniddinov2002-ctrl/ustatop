@@ -48,7 +48,7 @@ export default function Orders() {
 
       <Card bodyClass="p-0">
         {/* filtrlar */}
-        <div className="flex flex-wrap items-center gap-3 border-b border-ink-200 p-4 dark:border-ink-800">
+        <div className="flex flex-wrap items-center gap-3 border-b border-ink-200 p-4 dark:border-brand-400/10">
           <div className="flex flex-wrap gap-1">
             {FILTERS.map((f) => (
               <button key={f.id} type="button" onClick={() => reset(setFilter)(f.id)}
@@ -83,7 +83,7 @@ export default function Orders() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[980px]">
-              <thead className="border-b border-ink-200 dark:border-ink-800">
+              <thead className="border-b border-ink-200 dark:border-brand-400/10">
                 <tr>
                   <th className="th">ID</th>
                   <th className="th">Mijoz</th>
@@ -95,7 +95,7 @@ export default function Orders() {
                   <th className="th">Vaqt</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-ink-100 dark:divide-ink-800">
+              <tbody className="divide-y divide-ink-100 dark:divide-ink-800/70">
                 {rows.map((o) => (
                   <tr key={o.id} onClick={() => setDetail(o)}
                     className={cx(
@@ -127,7 +127,7 @@ export default function Orders() {
         )}
 
         {pageCount > 1 && (
-          <div className="flex items-center justify-between gap-3 border-t border-ink-200 p-3 dark:border-ink-800">
+          <div className="flex items-center justify-between gap-3 border-t border-ink-200 p-3 dark:border-brand-400/10">
             <p className="text-xs muted">{current}-sahifa, jami {pageCount}</p>
             <div className="flex gap-2">
               <button type="button" className="btn-ghost !py-1.5 !text-xs" disabled={current === 1}
@@ -160,7 +160,7 @@ function OrderDrawer({ order, workers, categoryById, onClose, onStatus, onAssign
       <button type="button" aria-label="Yopish" onClick={onClose}
         className="absolute inset-0 bg-ink-950/40 backdrop-blur-sm" />
       <aside className="relative flex w-full max-w-md animate-fade-in flex-col overflow-y-auto border-l border-ink-200 bg-white dark:border-ink-800 dark:bg-ink-900">
-        <header className="flex items-start justify-between gap-3 border-b border-ink-200 p-4 dark:border-ink-800">
+        <header className="flex items-start justify-between gap-3 border-b border-ink-200 p-4 dark:border-brand-400/10">
           <div>
             <h2 className="text-lg font-bold tnum text-ink-900 dark:text-white">Buyurtma {order.id}</h2>
             <p className="mt-1 text-xs muted">{time(order.createdAt)} · {ago(order.createdAt)}</p>
@@ -193,7 +193,7 @@ function OrderDrawer({ order, workers, categoryById, onClose, onStatus, onAssign
               </p>
               <ul className="space-y-2">
                 {candidates.map((w) => (
-                  <li key={w.id} className="flex items-center gap-2 rounded-lg border border-ink-200 p-2 dark:border-ink-800">
+                  <li key={w.id} className="flex items-center gap-2 rounded-lg border border-ink-200 p-2 dark:border-brand-400/10">
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-medium text-ink-900 dark:text-white">{w.name}</span>
                       <span className="block text-xs muted">★ {w.rating} · ~{w.avgArrivalMin} daq · {w.district}</span>
@@ -207,7 +207,7 @@ function OrderDrawer({ order, workers, categoryById, onClose, onStatus, onAssign
             </div>
           )}
 
-          <div className="flex flex-wrap gap-2 border-t border-ink-200 pt-4 dark:border-ink-800">
+          <div className="flex flex-wrap gap-2 border-t border-ink-200 pt-4 dark:border-brand-400/10">
             {order.status !== 'completed' && (
               <button type="button" onClick={() => onStatus('completed')} className="btn-primary !text-xs">
                 Bajarildi deb belgilash
