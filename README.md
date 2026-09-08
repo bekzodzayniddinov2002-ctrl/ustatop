@@ -25,6 +25,25 @@ bu panel unga REST API va WebSocket orqali ulanishga tayyor.
 
 ## Ishga tushirish
 
+### Docker orqali (tavsiya etiladi)
+
+```bash
+docker compose up            # http://localhost:5173 — hot reload bilan
+```
+
+Konteyner ishga tushgach `src/` ichidagi istalgan faylni tahrir qiling —
+Vite HMR o'zgarishni brauzerga darhol yetkazadi, qayta ishga tushirish shart emas.
+
+Ishlab chiqarish build'i (nginx orqali):
+
+```bash
+docker compose --profile prod up --build   # http://localhost:8080
+```
+
+To'xtatish: `docker compose --profile prod down`
+
+### Docker'siz
+
 ```bash
 npm install
 npm run dev      # http://localhost:5173
@@ -52,6 +71,45 @@ Panel Navoiy pilot loyihasining haqiqiy ko‘rsatkichlariga asoslangan:
 - **92%** mijozlar mamnunligi, **4.8/5** o‘rtacha reyting
 - **15–20%** platforma komissiyasi
 - Yillik maqsadlar: 5 000 buyurtma · 200 faol usta · 150 mln so‘m daromad · 3 shahar
+
+## Docker
+
+| Fayl | Vazifasi |
+|---|---|
+| `Dockerfile` | Ko'p bosqichli: `dev` (Vite + HMR) va `prod` (nginx) nishonlari |
+| `docker-compose.yml` | `web` — ishlab chiqish; `web-prod` (prod profili) — nginx |
+| `docker/nginx.conf` | SPA yo'naltirish, gzip, keshlash va xavfsizlik sarlavhalari |
+| `.env.example` | Portlar va kuzatish rejimi uchun ixtiyoriy o'zgaruvchilar |
+
+### Hot reload qanday ishlaydi
+
+- Manba kodi konteynerga bog'lanadi (`.:/app`), shuning uchun tahrir darhol ko'rinadi.
+- `node_modules` alohida nomlangan volume'da saqlanadi — host'dagi papka (yoki uning
+  yo'qligi) konteyner ichidagi platformaga mos binarlarni bekor qilmaydi.
+- Vite `--host 0.0.0.0` bilan ishga tushadi, aks holda konteyner tashqarisidan ochilmaydi.
+- macOS va Windows'da bind mount inotify hodisalarini yetkazmaydi, shuning uchun
+  `VITE_POLLING=true` (standart) — Vite fayllarni polling orqali kuzatadi.
+  **Linux'da** `.env` faylida `VITE_POLLING=false` qilsangiz protsessor yuki kamayadi.
+
+### Portni o'zgartirish
+
+`.env` faylida (`cp .env.example .env`):
+
+```
+DEV_PORT=3000
+PROD_PORT=8000
+```
+
+HMR mijozi brauzerda shu portga ulanishi uchun `HMR_PORT` compose faylida
+avtomatik `DEV_PORT` ga tenglashtiriladi — qo'shimcha sozlash talab etilmaydi.
+
+### Bog'liqliklar o'zgarganda
+
+`package.json` yangilansa, `node_modules` volume'i avtomatik yangilanmaydi:
+
+```bash
+npm run docker:reinstall     # docker compose down -v && docker compose up --build
+```
 
 ## Loyiha tuzilishi
 

@@ -8,7 +8,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "docker:dev": "docker compose up",
+    "docker:dev:build": "docker compose up --build",
+    "docker:prod": "docker compose --profile prod up --build -d",
+    "docker:down": "docker compose --profile prod down",
+    "docker:reinstall": "docker compose down -v && docker compose up --build"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
