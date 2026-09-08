@@ -84,12 +84,11 @@ export default function Workers() {
           <Empty icon={Users} title="Usta topilmadi" hint="Boshqa filtr yoki qidiruv so‘rovini sinab ko‘ring." />
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1040px]">
+            <table className="w-full min-w-[940px] [&_td]:px-3 [&_th]:px-3">
               <thead className="border-b border-ink-200 dark:border-ink-800">
                 <tr>
                   <th className="th">Usta</th>
                   <th className="th">Kategoriya</th>
-                  <th className="th">Hudud</th>
                   <th className="th">Reyting</th>
                   <th className="th">Ishlar</th>
                   <th className="th">Qabul %</th>
@@ -119,11 +118,10 @@ export default function Workers() {
                         {categoryById[w.categoryId]?.name}
                       </span>
                     </td>
-                    <td className="td whitespace-nowrap muted">{w.district}</td>
                     <td className="td tnum">★ {w.rating}</td>
                     <td className="td tnum">{w.jobs}</td>
                     <td className="td tnum">{pct(w.acceptRate)}</td>
-                    <td className="td tnum">{sum(w.earnings, { short: true })}</td>
+                    <td className="td whitespace-nowrap tnum">{sum(w.earnings, { short: true })}</td>
                     <td className="td">
                       <Badge tone={w.status === 'online' ? 'emerald' : w.status === 'blocked' ? 'rose' : 'slate'}>
                         <Dot tone={w.status === 'online' ? 'emerald' : w.status === 'blocked' ? 'rose' : 'slate'}
@@ -131,19 +129,21 @@ export default function Workers() {
                         {w.status === 'online' ? 'Online' : w.status === 'blocked' ? 'Bloklangan' : 'Offline'}
                       </Badge>
                     </td>
-                    <td className="td">
+                    <td className="td whitespace-nowrap">
                       <span className="flex gap-1.5">
                         <button type="button" onClick={() => toggleVerified(w.id)}
-                          className="btn-ghost !px-2 !py-1 !text-xs"
+                          className="btn-ghost !px-2 !py-1 !text-[11px]"
                           title={w.verified ? 'Tekshiruvni bekor qilish' : 'Tekshirilgan deb belgilash'}>
-                          {w.verified ? 'Bekor' : 'Tasdiqlash'}
+                          {w.verified ? 'Bekor' : 'Tasdiq'}
                         </button>
                         {w.status === 'blocked' ? (
                           <button type="button" onClick={() => setWorkerStatus(w.id, 'offline')}
-                            className="btn-ghost !px-2 !py-1 !text-xs">Blokdan chiqarish</button>
+                            className="btn-ghost !px-2 !py-1 !text-[11px]"
+                            title="Blokdan chiqarish">Blokdan</button>
                         ) : (
                           <button type="button" onClick={() => setWorkerStatus(w.id, 'blocked')}
-                            className="btn-ghost !px-2 !py-1 !text-xs !text-rose-600 dark:!text-rose-400">Bloklash</button>
+                            className="btn-ghost !px-2 !py-1 !text-[11px] !text-rose-600 dark:!text-rose-400"
+                            title="Ustani bloklash">Bloklash</button>
                         )}
                       </span>
                     </td>
