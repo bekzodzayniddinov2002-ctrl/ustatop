@@ -1,0 +1,20 @@
+services:
+  dav-news:
+    build: .
+    image: dav-news:latest
+    container_name: dav-news
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    # Maxfiy kalitlar .env.local faylidan o'qiladi (fayl bo'lmasa ilova DEMO rejimida ishlaydi)
+    env_file:
+      - path: .env.local
+        required: false
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/.next/cache
+    security_opt:
+      - no-new-privileges:true

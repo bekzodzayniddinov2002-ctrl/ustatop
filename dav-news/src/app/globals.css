@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --animate-blob-1: blob1 22s ease-in-out infinite;
+  --animate-blob-2: blob2 26s ease-in-out infinite;
+  --animate-blob-3: blob3 30s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.5s ease-out both;
+
+  @keyframes blob1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(18vw, 12vh) scale(1.2); }
+    66% { transform: translate(-8vw, 20vh) scale(0.9); }
+  }
+  @keyframes blob2 {
+    0%, 100% { transform: translate(0, 0) scale(1.1); }
+    50% { transform: translate(-22vw, -14vh) scale(0.85); }
+  }
+  @keyframes blob3 {
+    0%, 100% { transform: translate(0, 0) scale(0.9); }
+    40% { transform: translate(14vw, -18vh) scale(1.25); }
+    80% { transform: translate(-12vw, 6vh) scale(1); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer components {
+  /* Glassmorphism panel: yarim shaffof, xiralashgan fon, nozik oq hoshiya */
+  .glass {
+    @apply rounded-2xl border border-white/15 bg-white/10 shadow-xl shadow-black/20 backdrop-blur-md;
+  }
+  .glass-soft {
+    @apply rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm;
+  }
+  .glass-input {
+    @apply w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none transition focus:border-violet-300/60 focus:bg-white/10 focus:ring-2 focus:ring-violet-400/30;
+  }
+}
+
+html {
+  color-scheme: dark;
+}
+body {
+  @apply min-h-screen bg-[#05060f] text-slate-100 antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob-1, .animate-blob-2, .animate-blob-3 { animation: none; }
+}
